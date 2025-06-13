@@ -1,7 +1,8 @@
 const express=require("express");
 const app = express();
 const bodyParser=require("body-parser");
-const PORT=10000;
+const PORT = process.env.PORT || 3000;
+
 const path=require('path');
 const mongoose=require('mongoose');
 app.use(express.urlencoded({extended:true}));
@@ -137,6 +138,6 @@ app.get('/', async (req, res) => {
   if (!user) return res.send("No user found in DB");
   res.render('profile', { User: user });
 });
-app.listen(PORT, ()=>{
-    console.log(`Server running on http://localhost:${PORT}`);
+app.listen(PORT, '0.0.0.0', () => {
+  console.log(`Server running on http://0.0.0.0:${PORT}`);
 });
