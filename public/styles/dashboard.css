@@ -1,0 +1,163 @@
+/* 🌐 Base Styling */
+body {
+  font-family: 'Segoe UI', Arial, sans-serif;
+  background-color: #f7f7f7; /* Light grey background */
+  margin: 0;
+  padding: 0;
+  color: #2c3e50;
+  animation: fadeIn 1s ease-out;
+}
+
+/* 🧭 Keyframe Animation */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* 🧑‍⚕️ Dashboard */
+.dashboard {
+  max-width: 900px;
+  margin: 50px auto;
+  padding: 20px;
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+  text-align: left;
+  animation: fadeIn 1s ease;
+}
+
+/* 👤 Profile Form Styling – Clean and Spacious */
+.profile-form {
+  max-width: 600px;
+  margin: 30px auto;
+  padding: 30px;
+  background-color: #fefefe;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  animation: fadeIn 1s ease-in-out;
+}
+
+/* 📝 Form Group */
+.form-group {
+  margin-bottom: 24px;
+  text-align: left;
+}
+
+/* 🏷️ Form Labels */
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #34495e;
+}
+
+/* 🖋️ Form Inputs and Select */
+.form-group input,
+.form-group select {
+  width: 100%;
+  padding: 12px 14px;
+  font-size: 15px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: #fbfbfb;
+  transition: border 0.3s ease, background-color 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+  border: 1px solid #3498db;
+  outline: none;
+  background-color: #ffffff;
+}
+
+/* 🖱️ Profile Form Button */
+.profile-form .btn {
+  margin-top: 30px;
+  width: 100%;
+  padding: 14px;
+  font-size: 16px;
+  font-weight: 600;
+  background-color: #3498db;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.profile-form .btn:hover {
+  background-color: #2980b9;
+}
+
+/* 📄 Cards */
+.card {
+  background-color: white;
+  padding: 20px;
+  margin: 20px 0;
+  border-radius: 10px;
+  box-shadow: 0 0 5px rgba(0,0,0,0.1);
+  animation: fadeIn 1.2s ease-in-out;
+}
+
+/* 🚪 Logout Button */
+.logout,
+.logout-btn {
+  background-color: #e74c3c;
+  color: white;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.logout:hover,
+.logout-btn:hover {
+  background-color: #c0392b;
+}
+
+/* 📤 Upload Section */
+.upload-section {
+  margin-top: 20px;
+}
+
+input[type="file"] {
+  margin-top: 10px;
+  padding: 12px;
+  border: 1px dashed #ccc;
+  width: 100%;
+  border-radius: 8px;
+  background-color: #fafafa;
+  transition: border 0.3s ease;
+}
+
+input[type="file"]:focus {
+  border: 1px solid #3498db;
+}
+
+/* 📱 Responsive Design */
+@media (max-width: 768px) {
+  .container, .dashboard {
+    margin: 20px;
+    padding: 15px;
+  }
+
+  .btn {
+    width: 100%;
+    margin: 10px 0;
+  }
+
+  .modal-content {
+    width: 90%;
+  }
+
+  .form-group {
+    margin-bottom: 16px;
+  }
+
+  .profile-form {
+    padding: 20px;
+    width: 100%;
+  }
+}

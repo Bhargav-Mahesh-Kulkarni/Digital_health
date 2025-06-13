@@ -11,22 +11,34 @@
     <h1>HealthVault</h1>
     <p>Your personal, secure medical data wallet</p>
 
-    <div class="button-group">
-      <button class="btn" onclick="openLoginModal()">Patient Login</button>
-      <a href="emergency.html"><button class="btn emergency">Emergency Access</button></a>
-    </div>
-  </div>
+   <div class="button-group">
+  <button class="btn" onclick="openRegisterModal()">Register</button>
+  <button class="btn" onclick="openLoginModal()">Login</button>
+  <a href="emergency.html"><button class="btn emergency">Emergency Access</button></a>
+</div>
 
-  <!-- 🔐 Login Modal (popup) -->
-  <div id="loginModal" class="modal">
-    <div class="modal-content">
-      <span class="close" onclick="closeLoginModal()">&times;</span>
-      <h2>Patient Login</h2>
-      <input type="email" placeholder="Email" id="email" required />
-      <input type="password" placeholder="Password" id="password" required />
-      <button class="btn" onclick="login()">Login</button>
-    </div>
+<!-- 👤 Register Modal -->
+<div id="registerModal" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeRegisterModal()">&times;</span>
+    <h2>Patient Registration</h2>
+    <input type="text" placeholder="Full Name" id="regName" required />
+    <input type="email" placeholder="Email" id="regEmail" required />
+    <input type="password" placeholder="Password" id="regPassword" required />
+    <button class="btn" onclick="register()">Register</button>
   </div>
+</div>
+
+<!-- 🔐 Login Modal -->
+<div id="loginModal" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeLoginModal()">&times;</span>
+    <h2>Patient Login</h2>
+    <input type="email" placeholder="Email" id="loginEmail" required />
+    <input type="password" placeholder="Password" id="loginPassword" required />
+    <button class="btn" onclick="login()">Login</button>
+  </div>
+</div>
 
   <script src="scripts/main.js"></script>
 </body>

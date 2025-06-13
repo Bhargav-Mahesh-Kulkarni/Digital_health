@@ -3,39 +3,85 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Dashboard – HealthVault</title>
-  <link rel="stylesheet" href="styles/style.css" />
-</head>
-<body>
-  <div class="dashboard">
-    <h1>Welcome to Your Health Dashboard</h1>
-    
-    <div class="card">
-      <h2>Your Info</h2>
-      <p id="name">Name: (loading...)</p>
-      <p id="blood">Blood Group: (loading...)</p>
-      <p id="allergy">Allergies: (loading...)</p>
-    </div>
+  <title>HealthVault Dashboard</title>
 
-    <div class="card">
-      <h2>Upload Medical Report</h2>
-      <input type="file" id="reportFile" />
-      <button onclick="uploadReport()">Upload</button>
-    </div>
+  <!-- External Styles -->
+  <link rel="stylesheet" href="styles/dashboard.css" />
 
-    <div class="card">
-      <h2>Generate</h2>
-      <button onclick="generateQR()">Generate QR</button>
-      <div id="qrcode"></div>
-      <button onclick="generatePDF()">Download PDF</button>
-    </div>
-
-    <button class="logout" onclick="logout()">Logout</button>
-  </div>
-
-  <!-- QR and PDF libraries -->
+  <!-- Libraries -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-  <script src="scripts/dashboard.js"></script>
+</head>
+<body>
+  <div class="container">
+    <h1>🏥 HealthVault Dashboard</h1>
+    <p>Welcome to your digital health portal</p>
+
+    <!-- 👤 My Profile -->
+    <section class="card">
+      <h2>👤 My Profile</h2>
+      <form id="profileForm" class="profile-form">
+        <div class="form-group">
+          <label for="patientName">Full Name</label>
+          <input type="text" id="patientName" placeholder="Enter full name" />
+        </div>
+
+        <div class="form-group">
+          <label for="patientAge">Age</label>
+          <input type="number" id="patientAge" placeholder="Enter age" />
+        </div>
+
+        <div class="form-group">
+          <label for="patientGender">Gender</label>
+          <select id="patientGender">
+            <option value="">Select gender</option>
+            <option>Male</option>
+            <option>Female</option>
+            <option>Other</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="patientBlood">Blood Group</label>
+          <input type="text" id="patientBlood" placeholder="e.g. B+, O+" />
+        </div>
+
+        <div class="form-group">
+          <label for="patientAllergy">Allergies</label>
+          <input type="text" id="patientAllergy" placeholder="e.g. Penicillin" />
+        </div>
+
+        <div class="form-group">
+          <label for="patientEmergency">Emergency Contact</label>
+          <input type="text" id="patientEmergency" placeholder="e.g. +91 98765 43210" />
+        </div>
+
+        <button type="button" class="btn" onclick="saveProfile()">💾 Save Profile</button>
+      </form>
+    </section>
+
+    <!-- 📤 Upload Report -->
+    <section class="card">
+      <h2>📄 Upload Medical Report</h2>
+      <input type="file" id="reportFile" />
+      <button class="btn" onclick="uploadReport()">Upload Report</button>
+    </section>
+
+    
+
+    <!-- 📄 PDF Card -->
+    <section class="card">
+      <h2>🧾 Generate Health Card (PDF)</h2>
+      <button class="btn" onclick="generatePDF()">Download PDF</button>
+    </section>
+
+    <!-- 🔐 Logout -->
+    <div style="text-align: center; margin-top: 30px;">
+      <button class="logout" onclick="logout()">🚪 Logout</button>
+    </div>
+  </div>
+
+  <!-- JavaScript -->
+  <script src="dashboard.js"></script>
 </body>
 </html>
