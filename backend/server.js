@@ -1,7 +1,7 @@
 const express=require("express");
 const app = express();
 const bodyParser=require("body-parser");
-const PORT=4005;
+const PORT=10000;
 const path=require('path');
 const mongoose=require('mongoose');
 app.use(express.urlencoded({extended:true}));
@@ -56,8 +56,8 @@ app.get('/', (req, res) => {
 });
 */
 app.post('/save',async(req,res)=>{
-    const {fullName,DOB,gender,bloodGroup,allergies,diseases,EmergencyContact}=req.body;
-    const newUser=new User({fullName,DOB,gender,bloodGroup,allergies,diseases,EmergencyContact})
+    const {email,fullName,DOB,gender,bloodGroup,allergies,diseases,EmergencyContact}=req.body;
+    const newUser=new User({email,fullName,DOB,gender,bloodGroup,allergies,diseases,EmergencyContact})
 
     try{
         await newUser.save();
@@ -71,31 +71,32 @@ app.post('/save',async(req,res)=>{
 app.post('/update', async (req, res) => {
     const { email, fullName, DOB, gender, bloodGroup, allergies, diseases, EmergencyContact } = req.body;
 
+    console.log("Update Request Body:", req.body); // 🪵 Debug
+
+    if (!email) {
+        return res.status(400).send("Email is required to update profile.");
+    }
+
     try {
+        const existingUser = await User.findOne({ email });
+
+        if (!existingUser) {
+            return res.status(404).send("User not found");
+        }
+
         const updatedUser = await User.findOneAndUpdate(
-            { email: email }, // find by email
-            {
-                fullName,
-                DOB,
-                gender,
-                bloodGroup,
-                allergies,
-                diseases,
-                EmergencyContact
-            },
-            { new: true } // return the updated document
+            { email },
+            { fullName, DOB, gender, bloodGroup, allergies, diseases, EmergencyContact },
+            { new: true }
         );
 
-        if (updatedUser) {
-            res.send("User updated successfully");
-        } else {
-            res.status(404).send("User not found");
-        }
+        res.send("User updated successfully");
     } catch (error) {
-        console.error("Error updating the user", error);
+        console.error("Error updating user:", error);
         res.status(500).send("Internal Server Error");
     }
 });
+    
 app.post('/signin',async(req,res)=>{
     const {email,password}=req.body;
     const newUser=new User({email,password})
