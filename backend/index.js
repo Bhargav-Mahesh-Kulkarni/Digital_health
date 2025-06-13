@@ -1,62 +1,140 @@
 const express=require("express");
 const app = express();
 const bodyParser=require("body-parser");
-const PORT=3000;
+const PORT=4005;
 const path=require('path');
 const mongoose=require('mongoose');
 app.use(express.urlencoded({extended:true}));
-mongoose.connect('mongodb://127.0.0.1:27017/signinHDB')
+mongoose.connect('mongodb://127.0.0.1:27017/userDataSaveDB')
+app.set('view engine', 'ejs')
+app.set("views", path.join(__dirname, "../views"));
 
 app.use(express.json());
 
+app.use(express.static(path.join(__dirname, "../public")));
+
 const userSchema=new mongoose.Schema({
-    name:String,
+    
     email:String,
-    password:String
+    password:String,
+    role:String,
+    fullName:String,
+    DOB:String,
+    gender:String,
+    bloodGroup:String,
+    allergies:String,
+    diseases:String,
+    EmergencyContact:String,
+    historyList:[],
+    medicationList:[],
+    photo:String
 })
 const User=mongoose.model('User',userSchema);
 
-app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'signin.html'));
-});
-app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'home.html'));
-});
-app.get('/',(req,res)=>{
-    res.send("");
-});
 
-app.post('/signin',async(req,res)=>{
-    const {name,email,password}=req.body;
-    const newUser=new User({name,email,password})
+
+
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname,'..','public','index.html'));
+});
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname,'..','public','login.html'));
+   });
+
+/*app.get('/', (req, res) => {
+      res.sendFile(path.join(__dirname,'..','public','register.html'));
+   });*/
+ /*  app.get('/profile', async (req, res) => {
+  try {
+    const user = await User.findOne().sort({ _id: -1 }); // latest user
+    if (!user) return res.send("No user found");
+    res.render('profile', { User: user }); // send to view
+  } catch (error) {
+    console.error(error);
+    res.status(500).send("Error loading profile");
+  }
+});
+*/
+app.post('/save',async(req,res)=>{
+    const {fullName,DOB,gender,bloodGroup,allergies,diseases,EmergencyContact}=req.body;
+    const newUser=new User({fullName,DOB,gender,bloodGroup,allergies,diseases,EmergencyContact})
 
     try{
         await newUser.save();
         res.send("user Saved successfully");
+
     }catch(error){
         console.error("error saving the file",error)
         res.status(500).send("error found")
     }
 });
-app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'login.html'));
+app.post('/update', async (req, res) => {
+    const { email, fullName, DOB, gender, bloodGroup, allergies, diseases, EmergencyContact } = req.body;
+
+    try {
+        const updatedUser = await User.findOneAndUpdate(
+            { email: email }, // find by email
+            {
+                fullName,
+                DOB,
+                gender,
+                bloodGroup,
+                allergies,
+                diseases,
+                EmergencyContact
+            },
+            { new: true } // return the updated document
+        );
+
+        if (updatedUser) {
+            res.send("User updated successfully");
+        } else {
+            res.status(404).send("User not found");
+        }
+    } catch (error) {
+        console.error("Error updating the user", error);
+        res.status(500).send("Internal Server Error");
+    }
 });
+app.post('/signin',async(req,res)=>{
+    const {email,password}=req.body;
+    const newUser=new User({email,password})
+
+    try{
+        await newUser.save();
+        res.send("user Saved successfully");
+
+    }catch(error){
+        console.error("error saving the file",error)
+        res.status(500).send("error found")
+    }
+});
+   
 app.post('/login',async(req,res)=>{
     const {email,password}=req.body;
     try{
-        const user=await user.findone({email})
+        const user=await User.findOne({email})
         if(!user){
             return res.status(401).send("user not found")
         }
         if(user.password!==password){
             return res.status(401).send("Incorrect password");
         }
-         //res.send("login successful")
-         res.redirect('/home');
+        if(user.role=="Patient"){
+        res.render("home",{User:user});
+        }
+        if(user.role=="Doctor"){
+        res.render("doctorchoice");
+        }
     }catch(error){
         console.log("error found",error)
         res.status(500).send("Server error");
     }
+});
+app.get('/', async (req, res) => {
+  const user = await User.findOne().sort({ _id: -1 }); // latest user
+  if (!user) return res.send("No user found in DB");
+  res.render('profile', { User: user });
 });
 app.listen(PORT, ()=>{
     console.log(`Server running on http://localhost:${PORT}`);
