@@ -28,7 +28,16 @@ const userSchema=new mongoose.Schema({
     EmergencyContact:String,
     historyList:[],
     medicationList:[],
-    photo:String
+    photo:String,
+
+    previousDoctors: [
+    {
+      doctorEmail:String,
+      doctorName: String,
+      doctorContact: String,
+      visitDate: Date
+    }
+   ] 
 })
 const User=mongoose.model('User',userSchema);
 
