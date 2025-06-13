@@ -4,41 +4,96 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>HealthVault – Digital Health Identity</title>
-  <link rel="stylesheet" href="styles/style.css" />
+  <link rel="stylesheet" href="Home1.css" />
 </head>
 <body>
   <div class="container">
+    <div class="navbar">
+        <div class="head">
     <h1>HealthVault</h1>
     <p>Your personal, secure medical data wallet</p>
+    </div>
 
-   <div class="button-group">
-  <button class="btn" onclick="openRegisterModal()">Register</button>
-  <button class="btn" onclick="openLoginModal()">Login</button>
-  <a href="emergency.html"><button class="btn emergency">Emergency Access</button></a>
-</div>
+    <div class="button-group">
+      <button class="btn" onclick="openLoginModal()">Patient Login</button>
+      <a href="emergency.html"><button class="btn emergency">Emergency Access</button></a>
+    </div>
+    </div>
+    <div class="footer">
 
-<!-- 👤 Register Modal -->
-<div id="registerModal" class="modal">
-  <div class="modal-content">
-    <span class="close" onclick="closeRegisterModal()">&times;</span>
-    <h2>Patient Registration</h2>
-    <input type="text" placeholder="Full Name" id="regName" required />
-    <input type="email" placeholder="Email" id="regEmail" required />
-    <input type="password" placeholder="Password" id="regPassword" required />
-    <button class="btn" onclick="register()">Register</button>
+    </div>
+    <div class="main">
+ 
+  <section class="solutions">
+    <h4 class="subtitle">Comprehensive Health Solutions</h4>
+    <h1 class="title">Our Solutions</h1>
+    <p class="desc">Explore our services for exceptional healthcare.</p>
+    <button class="appointment-btn">Make Appointment</button>
+
+    <div class="services">
+      <div class="card">
+        <div class="icon">🔬</div>
+        <p>Health Card</p>
+      </div>
+      <div class="card">
+        <div class="icon">📋</div>
+        <p>50K</p>
+      </div>
+      <div class="card">
+        <div class="icon">👁</div>
+        <p>Franchisee Options</p>
+      </div>
+      <div class="partners">
+        <span class="number">150</span>
+        <p>Total Partners</p>
+      </div>
+    </div>
+  </section>
+  
+
+  <section class="features-section">
+    <p class="subtitle">Discover New Benefits</p>
+    <h1 class="main-title">Explore Our Features</h1>
+    <p class="description">
+      Experience seamless healthcare with our innovative digital health card, strong hospital partnerships, and user-friendly interface.
+    </p>
+
+    <div class="features-container">
+      <div class="feature-box">
+       <img src="icons/health-card-icon.png" alt="Health Card Icon" />
+
+        <h3>Health Card</h3>
+        <p>Access all your medical records in one secure place.</p>
+      </div>
+
+      <div class="feature-box">
+        <img src="icons/partnership-icon.png" alt="Partnerships Icon" />
+        <h3>Partnerships</h3>
+        <p>Collaborate with top hospitals for better healthcare.</p>
+      </div>
+
+      <div class="feature-box">
+        <img src="icons/interface-icon.png" alt="Interface Icon" />
+        <h3>Interface</h3>
+        <p>User-friendly design to easily navigate and manage your health.</p>
+      </div>
+    </div>
+  </section>
+
+</html>
+
+
+
+
+</html>
+
+
+
+    </div>
+
   </div>
-</div>
 
-<!-- 🔐 Login Modal -->
-<div id="loginModal" class="modal">
-  <div class="modal-content">
-    <span class="close" onclick="closeLoginModal()">&times;</span>
-    <h2>Patient Login</h2>
-    <input type="email" placeholder="Email" id="loginEmail" required />
-    <input type="password" placeholder="Password" id="loginPassword" required />
-    <button class="btn" onclick="login()">Login</button>
-  </div>
-</div>
+
 
   <script src="scripts/main.js"></script>
 </body>

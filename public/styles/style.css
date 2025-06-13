@@ -1,96 +1,194 @@
-/* 🌐 Global Styles */
-body {
-  font-family: 'Segoe UI', Arial, sans-serif;
-  background-color: #f7f7f7;
-  margin: 0;
+* {
   padding: 0;
-  color: #2c3e50;
-  text-align: center;
+  margin: 0;
+  box-sizing: border-box;
 }
 
-/* 📦 Container */
-.container {
-  margin-top: 100px;
-  padding: 20px;
+.navbar {
+  display: flex;
+  justify-content: space-between;  /* pushes head left and buttons right */
+  align-items: center;             /* vertically center items */
+  height: 60px;
+  width: 100%;
+  background-color: bisque;
+  padding: 0 20px;
 }
 
-/* 🧾 Headings */
-h1 {
-  font-size: 36px;
-  margin-bottom: 10px;
-  color: #2c3e50;
+.head {
+  padding: 5px;
 }
 
-p {
-  color: #555;
-  font-size: 18px;
-}
-
-/* 🔘 Buttons */
 .button-group {
-  margin-top: 20px;
+  display: flex;
+  gap: 16px;  /* space between buttons */
 }
 
 .btn {
-  padding: 12px 24px;
-  margin: 10px;
-  font-size: 16px;
-  cursor: pointer;
+  height: 45px;
+  width: 180px;
+  font-size: 1rem;
   background-color: #3498db;
-  border: none;
   color: white;
-  border-radius: 8px;
-  transition: background-color 0.3s ease;
-}
-
-.btn:hover {
-  background-color: #2980b9;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
 }
 
 .btn.emergency {
   background-color: #e74c3c;
 }
 
-.btn.emergency:hover {
-  background-color: #c0392b;
-}
-
-/* 🔐 Modal Styles */
-.modal {
-  display: none;
-  position: fixed;
-  z-index: 999;
-  left: 0;
-  top: 0;
+.footer {
+  height: 780px;
   width: 100%;
-  height: 100%;
-  overflow: auto;
-  background-color: rgba(0,0,0,0.5);
+  background-image: url(Home2.jpg);
+  background-size: cover;
+  background-position: center;
+}
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  background-color: #f6f6f6;
+  color: #333;
 }
 
-.modal-content {
-  background-color: #fff;
-  margin: 10% auto;
-  padding: 20px;
-  border-radius: 8px;
-  width: 300px;
-  text-align: left;
-  box-shadow: 0 0 10px rgba(0,0,0,0.25);
-}
-
-.modal-content input {
+.solutions {
+  text-align: center;
+  padding: 100px 100px;
+   height: 780px;
   width: 100%;
-  padding: 10px;
+}
+
+.subtitle {
+  color: #607d8b;
+  font-weight: normal;
+  font-size: 18px;
+}
+
+.title {
+  font-size: 36px;
   margin: 10px 0;
-  border: 1px solid #ccc;
-  border-radius: 6px;
 }
 
-.close {
-  float: right;
-  font-size: 24px;
-  font-weight: bold;
+.desc {
+  margin: 10px 0 20px;
+  font-size: 16px;
+}
+
+.appointment-btn {
+  background-color: #f76d6d;
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  font-size: 16px;
   cursor: pointer;
-  color: #e74c3c;
+  border-radius: 4px;
+  margin-top: 20px;
+  margin-bottom: 140px;
 }
 
+.services {
+  height: 230px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: stretch; /* ensures all cards are equal height if needed */
+  gap: 40px; /* more balanced spacing */
+  padding: 40px 20px; /* add padding around the service section */
+  max-width: 1200px; /* center content within a max width */
+  margin: 0 auto; /* center horizontally */
+}
+
+
+.card {
+  background-color: #fff;
+  border-radius: 10px;
+  width: 150px;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.05);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.card .icon {
+  font-size: 30px;
+  margin-bottom: 10px;
+}
+
+.partners {
+  background-color: #4a76a8;
+  color: white;
+  width: 150px;
+  padding: 20px;
+  border-radius: 10px;
+  font-size: 18px;
+}
+
+.partners .number {
+  font-size: 36px;
+  font-weight: bold;
+  display: block;
+}
+
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f8f8f8;
+  color: #333;
+  text-align: center;
+}
+
+.features-section {
+    height: 780px;
+  width: 100%;
+  padding: 60px 20px;
+  max-width: 1000px;
+  margin: auto;
+}
+
+.subtitle {
+  color: #5679c0;
+  font-weight: 500;
+  letter-spacing: 1px;
+}
+
+.main-title {
+  font-size: 36px;
+  margin: 10px 0;
+}
+
+.description {
+  max-width: 600px;
+  margin: 30px auto 40px;
+  font-size: 16px;
+  color: #666;
+}
+
+.features-container {
+  margin-top: 300px;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  gap: 40px;
+}
+
+.feature-box {
+  max-width: 250px;
+}
+
+.feature-box img {
+  width: 48px;
+  height: 48px;
+  margin-bottom: 15px;
+}
+
+.feature-box h3 {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.feature-box p {
+  font-size: 14px;
+  color: #777;
+}
