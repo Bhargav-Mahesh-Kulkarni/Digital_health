@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Dashboard – HealthVault</title>
+  <link rel="stylesheet" href="styles/style.css" />
+</head>
+<body>
+  <div class="dashboard">
+    <h1>Welcome to Your Health Dashboard</h1>
+    
+    <div class="card">
+      <h2>Your Info</h2>
+      <p id="name">Name: (loading...)</p>
+      <p id="blood">Blood Group: (loading...)</p>
+      <p id="allergy">Allergies: (loading...)</p>
+    </div>
+
+    <div class="card">
+      <h2>Upload Medical Report</h2>
+      <input type="file" id="reportFile" />
+      <button onclick="uploadReport()">Upload</button>
+    </div>
+
+    <div class="card">
+      <h2>Generate</h2>
+      <button onclick="generateQR()">Generate QR</button>
+      <div id="qrcode"></div>
+      <button onclick="generatePDF()">Download PDF</button>
+    </div>
+
+    <button class="logout" onclick="logout()">Logout</button>
+  </div>
+
+  <!-- QR and PDF libraries -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="scripts/dashboard.js"></script>
+</body>
+</html>
