@@ -1,14 +1,14 @@
 // Open/close modals
-function openRegisterModal() {
+/*function openRegisterModal() {
   document.getElementById("registerModal").style.display = "flex";
 }
 function closeRegisterModal() {
   document.getElementById("registerModal").style.display = "none";
-}
-function openLoginModal() {
+}*/
+function openRegistrationModal() {
   document.getElementById("loginModal").style.display = "flex";
 }
-function closeLoginModal() {
+function closeLRegistrationModal() {
   document.getElementById("loginModal").style.display = "none";
 }
 
@@ -18,16 +18,16 @@ function register() {
   const email = document.getElementById("regEmail").value;
   const password = document.getElementById("regPassword").value;
 
-  if (!name || !email || !password) {
-    alert("Please fill all registration fields.");
-    return;
-  }
+//   if (!name || !email || !password) {
+//     alert("Please fill all registration fields.");
+//     return;
+//   }
 
-  // Simulate registration success
-  alert("Registration successful! Now you can log in.");
-  closeRegisterModal();
-  openLoginModal();
-}
+// // Simulate registration success
+//   alert("Registration successful! Now you can log in.");
+closeRegisterModal();
+ /*openLoginModal();*/
+ }
 
 // Login function (fake login for now)
 function login() {
@@ -39,8 +39,8 @@ function login() {
     return;
   }
 
-  // Simulate login success
-  alert("Login successful! Redirecting to dashboard...");
+  // // Simulate login success
+  // alert("Login successful! Redirecting to dashboard...");
   window.location.href = "dashboard.html";
 }
 
