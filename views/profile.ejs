@@ -1,0 +1,11 @@
+const User=mongoose.model('User',userSchema);
+app.get('/profile', (req, res) => {
+
+    const User = {
+        name: "User.fullName",
+        age: 21,
+        bloodGroup: "B+",
+        allergies: "None"
+    };
+    res.render('profile', { User });
+});

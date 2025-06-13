@@ -6,10 +6,10 @@ function closeRegisterModal() {
   document.getElementById("registerModal").style.display = "none";
 }*/
 function openRegistrationModal() {
-  document.getElementById("loginModal").style.display = "flex";
+  document.getElementById("registrationModal").style.display = "flex";
 }
 function closeLRegistrationModal() {
-  document.getElementById("loginModal").style.display = "none";
+  document.getElementById("registrationModal").style.display = "none";
 }
 
 // Register function (Temporary logic for now)

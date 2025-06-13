@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Edit Patient Profile</title>
+  <link rel="stylesheet" href="styles/new.css" />
+</head>
+<body>
+  <div class="container">
+    <h2>Edit Patient Profile</h2>
+    <form action="/update" method="POST">
+      <div class="input-group">
+        <label for="fullName">Full Name</label>
+        <input type="text" id="fullName" name="fullName"  required />
+      </div>
+
+      <div class="input-group">
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" required />
+      </div>
+
+      <div class="input-group">
+        <label for="DOB">Date of Birth</label>
+        <input type="date" id="DOB" name="DOB" required />
+      </div>
+
+      <div class="input-group">
+        <label for="Gender">Gender</label>
+        <select id="Gender" name="Gender">
+          <option value="Male" selected>Male</option>
+          <option value="Female">Female</option>
+          <option value="Other">Other</option>
+        </select>
+      </div>
+
+      <div class="input-group">
+        <label for="bloodGroup">Blood Group</label>
+        <input type="text" id="bloodGroup" name="bloodGroup"  />
+      </div>
+
+      <div class="input-group">
+        <label for="allergies">Allergies</label>
+        <input type="text" id="allergies" name="allergies"  />
+      </div>
+
+      <div class="input-group">
+        <label for="diseases">Diseases</label>
+        <input type="text" id="diseases" name="diseases"/>
+      </div>
+
+      <div class="input-group">
+        <label for="EmergencyContact">Emergency Contact</label>
+        <input type="text" id="EmergencyContact" name="EmergencyContact"/>
+      </div>
+
+      <div class="input-group">
+        <label for="photo">Profile Photo Filename</label>
+        <input type="text" id="photo" name="photo" />
+      </div>
+
+      <button type="submit">Save Profile</button>
+    </form>
+   <a href="/views/doctorchoice.ejs"> <div class="btn">Exit
+
+    </div></a>
+  </div>
+</body>
+</html>
