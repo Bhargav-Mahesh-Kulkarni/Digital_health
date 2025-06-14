@@ -1,7 +1,7 @@
 const express=require("express");
 const app = express();
 const bodyParser=require("body-parser");
-const PORT = process.env.PORT || 10000;
+const PORT = 10000;
 
 const path=require('path');
 const mongoose=require('mongoose');
@@ -41,9 +41,6 @@ const userSchema=new mongoose.Schema({
 })
 const User=mongoose.model('User',userSchema);
 
-
-
-
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname,'..','public','index.html'));
 });
@@ -65,9 +62,33 @@ app.get('/', (req, res) => {
   }
 });
 */
+
+app.get("/history/:email", async (req, res) => {
+  const userEmail = req.params.email;
+
+  try {
+    const user = await User.findOne({ email: userEmail });
+
+    if (!user) {
+      return res.status(404).send("User not found");
+    }
+
+    // 👇 Renders the EJS file with user's email and history
+    res.render("history", {
+      email: user.email,
+      historyList: user.historyList
+    });
+
+  } catch (err) {
+    console.error("Error loading history:", err);
+    res.status(500).send("Internal Server Error");
+  }
+});
+
+
 app.post('/save',async(req,res)=>{
-    const {email,fullName,DOB,gender,bloodGroup,allergies,diseases,EmergencyContact}=req.body;
-    const newUser=new User({email,fullName,DOB,gender,bloodGroup,allergies,diseases,EmergencyContact})
+    const {email,fullName,DOB,gender,bloodGroup,allergies,diseases,EmergencyContact,doctorEmail,doctorName,doctorContact,visitDate}=req.body;
+    const newUser=new User({email,fullName,DOB,gender,bloodGroup,allergies,diseases,EmergencyContact,doctorEmail,doctorName,doctorContact,visitDate})
 
     try{
         await newUser.save();
@@ -78,6 +99,7 @@ app.post('/save',async(req,res)=>{
         res.status(500).send("error found")
     }
 });
+
 app.post('/update', async (req, res) => {
     const { email, fullName, DOB, gender, bloodGroup, allergies, diseases, EmergencyContact } = req.body;
 
@@ -147,6 +169,7 @@ app.get('/', async (req, res) => {
   if (!user) return res.send("No user found in DB");
   res.render('profile', { User: user });
 });
-app.listen(PORT, '0.0.0.0', () => {
-  console.log(`Server running on http://0.0.0.0:${PORT}`);
+app.listen(PORT, () => {
+  console.log(`Server running on http://localhost:${PORT}`);
 });
+
